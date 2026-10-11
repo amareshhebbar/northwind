@@ -1,0 +1,9 @@
+.venv/
+.state/
+.gitgrounded/
+out/
+.env
+.active_version
+__pycache__/
+*.pyc
+.pytest_cache/
