@@ -1,0 +1,69 @@
+versions:
+  v1:
+    title: bare model, no controls
+    gateway: keyword
+    route: false
+    retrieve: false
+    cite: false
+    verify: false
+    votes: 1
+    abstain: false
+    tools: []
+  v2:
+    title: routing, retrieval and required citations
+    gateway: llm
+    route: true
+    retrieve: true
+    retrieval_k: 4
+    cite: true
+    verify: false
+    votes: 1
+    abstain: false
+    tools:
+      - lookup_policy
+  v3:
+    title: adds the verifier agent and record lookup
+    gateway: llm
+    route: true
+    retrieve: true
+    retrieval_k: 4
+    cite: true
+    verify: true
+    verify_retries: 1
+    votes: 1
+    abstain: false
+    tools:
+      - lookup_policy
+      - lookup_record
+  v4:
+    title: adds self consistency voting
+    gateway: llm
+    route: true
+    retrieve: true
+    retrieval_k: 4
+    cite: true
+    verify: true
+    verify_retries: 1
+    votes: 3
+    vote_temperature: 0.7
+    abstain: false
+    tools:
+      - lookup_policy
+      - lookup_record
+  v5:
+    title: adds abstain on low confidence and human escalation
+    gateway: llm
+    route: true
+    retrieve: true
+    retrieval_k: 4
+    cite: true
+    verify: true
+    verify_retries: 1
+    votes: 3
+    vote_temperature: 0.7
+    abstain: true
+    abstain_threshold: 0.55
+    tools:
+      - lookup_policy
+      - lookup_record
+      - escalate_to_human
