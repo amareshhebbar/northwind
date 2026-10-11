@@ -1,0 +1,62 @@
+[
+  {
+    "name": "lookup_policy",
+    "description": "Search the numbered support policy for lines relevant to a customer question. Returns policy ids and text.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string"
+        },
+        "service": {
+          "type": "string",
+          "description": "support service id such as billing or refunds"
+        }
+      },
+      "required": [
+        "query"
+      ]
+    }
+  },
+  {
+    "name": "lookup_record",
+    "description": "Fetch a customer record such as an order, ticket or subscription by its id, for example ORD-1001.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "service": {
+          "type": "string",
+          "description": "support service id such as billing or refunds"
+        }
+      },
+      "required": [
+        "record_id"
+      ]
+    }
+  },
+  {
+    "name": "escalate_to_human",
+    "description": "Hand the conversation to a human agent when the policy does not cover the question or the customer asks for a person.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "reason": {
+          "type": "string"
+        },
+        "summary": {
+          "type": "string"
+        },
+        "service": {
+          "type": "string",
+          "description": "support service id such as billing or refunds"
+        }
+      },
+      "required": [
+        "reason"
+      ]
+    }
+  }
+]
