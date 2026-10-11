@@ -1,0 +1,21 @@
+[
+  {
+    "name": "lookup_policy",
+    "description": "Search the support policy.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string"
+        },
+        "service": {
+          "type": "string",
+          "description": "support service id such as billing or refunds"
+        }
+      },
+      "required": [
+        "query"
+      ]
+    }
+  }
+]
