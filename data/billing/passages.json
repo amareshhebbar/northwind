@@ -1,0 +1,34 @@
+[
+ {
+  "id": "P1",
+  "text": "Invoices are issued on the 1st of each month and are due within 14 days."
+ },
+ {
+  "id": "P2",
+  "text": "Payments received after 14 days incur a late fee of 2 percent of the outstanding balance."
+ },
+ {
+  "id": "P3",
+  "text": "A customer can change the billing date once every 12 months."
+ },
+ {
+  "id": "P4",
+  "text": "Invoice copies for the past 24 months can be downloaded from Settings, then Billing."
+ },
+ {
+  "id": "P5",
+  "text": "Duplicate charges are refunded to the original card within 5 business days of confirmation."
+ },
+ {
+  "id": "P6",
+  "text": "A tax ID can be added before an invoice is issued, but issued invoices cannot be edited."
+ },
+ {
+  "id": "P7",
+  "text": "Payments are accepted by card, bank transfer and direct debit. Cash is not accepted."
+ },
+ {
+  "id": "P8",
+  "text": "Billing disputes must be raised within 60 days of the invoice date."
+ }
+]

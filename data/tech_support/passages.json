@@ -1,0 +1,34 @@
+[
+ {
+  "id": "P1",
+  "text": "The app supports iOS 16 and later and Android 10 and later."
+ },
+ {
+  "id": "P2",
+  "text": "Password reset links expire after 30 minutes."
+ },
+ {
+  "id": "P3",
+  "text": "If the app crashes on launch, update to the latest version and restart the device before contacting support."
+ },
+ {
+  "id": "P4",
+  "text": "Sync problems are fixed by signing out and back in, which re-downloads all data."
+ },
+ {
+  "id": "P5",
+  "text": "Priority 1 issues that block all use of the product get a response within 1 hour on weekdays."
+ },
+ {
+  "id": "P6",
+  "text": "Support hours are 8 am to 8 pm on weekdays and 10 am to 4 pm on Saturdays."
+ },
+ {
+  "id": "P7",
+  "text": "Support does not troubleshoot jailbroken or rooted devices."
+ },
+ {
+  "id": "P8",
+  "text": "Logs can be sent from Settings, then Help, then Send diagnostics."
+ }
+]
