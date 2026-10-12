@@ -1,0 +1,19 @@
+fastapi>=0.110
+uvicorn>=0.29
+httpx>=0.27
+pyyaml>=6.0
+langgraph>=0.2
+crewai>=1.0
+litellm>=1.60
+strands-agents[ollama,anthropic,openai]>=1.0
+google-adk[a2a]>=2.0
+a2a-sdk[http-server]>=1.0
+llama-index-core>=0.12
+pydantic-ai-slim[openai,anthropic]>=1.0
+chromadb>=0.5
+qdrant-client>=1.9
+redis>=5.0
+psycopg[binary]>=3.1
+mcp>=1.2
+gitgrounded>=0.2.1; python_version >= "3.11"
+pytest>=8.0
