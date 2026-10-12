@@ -1,0 +1,34 @@
+[
+ {
+  "id": "P1",
+  "text": "Subscriptions renew automatically at the end of each billing period."
+ },
+ {
+  "id": "P2",
+  "text": "Cancellation takes effect at the end of the current billing period and no prorated refund is given."
+ },
+ {
+  "id": "P3",
+  "text": "Free trials last 14 days and convert to a paid plan unless cancelled before day 14."
+ },
+ {
+  "id": "P4",
+  "text": "Upgrades take effect immediately and are prorated for the rest of the period."
+ },
+ {
+  "id": "P5",
+  "text": "Downgrades take effect at the next renewal date."
+ },
+ {
+  "id": "P6",
+  "text": "A subscription can be paused once for up to 3 months."
+ },
+ {
+  "id": "P7",
+  "text": "Annual plans can be cancelled for a prorated refund within 30 days of renewal."
+ },
+ {
+  "id": "P8",
+  "text": "Renewal reminder emails are sent 7 days before the renewal date."
+ }
+]

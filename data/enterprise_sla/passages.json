@@ -1,0 +1,34 @@
+[
+ {
+  "id": "P1",
+  "text": "Enterprise plans carry a 99.9 percent monthly uptime commitment."
+ },
+ {
+  "id": "P2",
+  "text": "Uptime below 99.9 percent earns a service credit of 10 percent of the monthly fee."
+ },
+ {
+  "id": "P3",
+  "text": "Uptime below 99.0 percent earns a service credit of 25 percent of the monthly fee."
+ },
+ {
+  "id": "P4",
+  "text": "Service credits must be requested within 30 days of the end of the affected month."
+ },
+ {
+  "id": "P5",
+  "text": "Severity 1 incidents receive a first response within 30 minutes, 24 hours a day."
+ },
+ {
+  "id": "P6",
+  "text": "Planned maintenance windows are announced 5 days in advance and are excluded from uptime."
+ },
+ {
+  "id": "P7",
+  "text": "Each enterprise account has a named technical account manager."
+ },
+ {
+  "id": "P8",
+  "text": "Service credits are applied to the next invoice and are not paid out in cash."
+ }
+]

@@ -1,0 +1,34 @@
+[
+ {
+  "id": "P1",
+  "text": "All products carry a 24 month limited warranty from the delivery date."
+ },
+ {
+  "id": "P2",
+  "text": "The warranty covers manufacturing defects and does not cover accidental damage."
+ },
+ {
+  "id": "P3",
+  "text": "Warranty claims require proof of purchase and the product serial number."
+ },
+ {
+  "id": "P4",
+  "text": "Approved claims are repaired or replaced at our discretion within 10 business days."
+ },
+ {
+  "id": "P5",
+  "text": "Battery capacity is covered only if it falls below 80 percent within the first 12 months."
+ },
+ {
+  "id": "P6",
+  "text": "Warranty is void if the product has been opened by an unauthorised repairer."
+ },
+ {
+  "id": "P7",
+  "text": "The warranty is not transferable to a second owner."
+ },
+ {
+  "id": "P8",
+  "text": "Customers pay shipping to the repair centre; we pay the return shipping."
+ }
+]

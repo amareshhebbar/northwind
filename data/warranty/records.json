@@ -1,0 +1,23 @@
+[
+ {
+  "id": "WAR-1001",
+  "status": "shipped",
+  "amount": 49,
+  "updated": "2026-09-10",
+  "note": "left the warehouse and is on its way"
+ },
+ {
+  "id": "WAR-1002",
+  "status": "processing",
+  "amount": 120,
+  "updated": "2026-09-12",
+  "note": "is being prepared by the team"
+ },
+ {
+  "id": "WAR-1003",
+  "status": "resolved",
+  "amount": 15,
+  "updated": "2026-09-14",
+  "note": "was completed and closed"
+ }
+]
