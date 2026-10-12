@@ -14,28 +14,52 @@ need_venv() {
   fi
 }
 
+supported() {
+  "$1" -c 'import sys; sys.exit(0 if (3,10) <= sys.version_info[:2] <= (3,13) else 1)' 2>/dev/null
+}
+
 pick_python() {
   for c in python3.12 python3.11 python3.13 python3.10 python3; do
-    if command -v "$c" >/dev/null 2>&1; then
-      if "$c" -c 'import sys; sys.exit(0 if sys.version_info >= (3,10) else 1)' 2>/dev/null; then
-        echo "$c"
-        return 0
-      fi
+    if command -v "$c" >/dev/null 2>&1 && supported "$c"; then
+      command -v "$c"
+      return 0
     fi
   done
   return 1
 }
 
+find_uv() {
+  if command -v uv >/dev/null 2>&1; then command -v uv; return 0; fi
+  [ -x "$HOME/.local/bin/uv" ] && { echo "$HOME/.local/bin/uv"; return 0; }
+  [ -x "$HOME/.cargo/bin/uv" ] && { echo "$HOME/.cargo/bin/uv"; return 0; }
+  return 1
+}
+
 cmd_setup() {
-  local py
-  py="$(pick_python)" || { echo "need Python 3.10 or newer"; exit 1; }
-  echo "using $($py --version) at $(command -v "$py")"
-  "$py" -m venv .venv
-  .venv/bin/python -m pip install -q --upgrade pip
-  .venv/bin/python -m pip install -r requirements.txt
+  if [ -x .venv/bin/python ] && ! supported .venv/bin/python; then
+    echo "existing .venv uses $(.venv/bin/python --version 2>&1), which CrewAI and Google ADK do not support yet. Recreating it."
+    rm -rf .venv
+  fi
+  local py uv
+  if py="$(pick_python)"; then
+    echo "using $("$py" --version) at $py"
+    [ -x .venv/bin/python ] || "$py" -m venv .venv
+    .venv/bin/python -m pip install -q --upgrade pip
+    .venv/bin/python -m pip install -r requirements.txt
+  elif uv="$(find_uv)"; then
+    echo "no Python 3.10 to 3.13 found; uv will download Python 3.12 into .venv"
+    [ -x .venv/bin/python ] || "$uv" venv --python 3.12 .venv
+    "$uv" pip install --python .venv/bin/python -r requirements.txt
+  else
+    echo "This project needs Python 3.10 to 3.13 (CrewAI and Google ADK do not support 3.14 yet)."
+    echo "Install one of these, then run ./run.sh setup again:"
+    echo "  sudo dnf install python3.12"
+    echo "  or: curl -LsSf https://astral.sh/uv/install.sh | sh"
+    exit 1
+  fi
   [ -f .env ] || cp .env.example .env
   .venv/bin/python tools/gen_data.py >/dev/null
-  echo "setup done. Edit .env and platform.yml, then: ./run.sh up all"
+  echo "setup done with $(.venv/bin/python --version). Edit .env and platform.yml, then: ./run.sh up all"
 }
 
 names_for() {

@@ -33,7 +33,9 @@ sec_setup() {
   else
     echo "docker not found, skipping databases (postgres, redis and qdrant services will report not ready)"
   fi
-  [ -d .venv ] || run ./run.sh setup
+  if ! .venv/bin/python -c "import crewai, google.adk, a2a, httpx" >/dev/null 2>&1; then
+    run ./run.sh setup || { echo "setup failed, fix the message above and run ./test.sh setup again"; exit 1; }
+  fi
   source .venv/bin/activate
   export PYTHON="$(command -v python)"
   run ./run.sh up all
