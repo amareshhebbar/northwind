@@ -1,0 +1,2461 @@
+version: 1
+project:
+  name: northwind-support-platform
+execution:
+  max_concurrency: 2
+targets:
+  gateway:
+    type: http
+    url: http://127.0.0.1:9100/ask
+    body: &id001
+      message: '{{input}}'
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+  gateway_v1:
+    type: http
+    url: http://127.0.0.1:9100/ask
+    body: *id001
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v1
+  gateway_v2:
+    type: http
+    url: http://127.0.0.1:9100/ask
+    body: *id001
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v2
+  gateway_v3:
+    type: http
+    url: http://127.0.0.1:9100/ask
+    body: *id001
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v3
+  gateway_v4:
+    type: http
+    url: http://127.0.0.1:9100/ask
+    body: *id001
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v4
+  gateway_v5:
+    type: http
+    url: http://127.0.0.1:9100/ask
+    body: *id001
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v5
+  gateway_a2a:
+    type: a2a
+    url: http://127.0.0.1:9100/a2a/
+    protocol: auto
+    timeout_s: 600
+  billing:
+    type: http
+    url: http://127.0.0.1:9101/ask
+    body: &id002
+      message: '{{input}}'
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+  billing_v1:
+    type: http
+    url: http://127.0.0.1:9101/ask
+    body: *id002
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v1
+  billing_v2:
+    type: http
+    url: http://127.0.0.1:9101/ask
+    body: *id002
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v2
+  billing_v3:
+    type: http
+    url: http://127.0.0.1:9101/ask
+    body: *id002
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v3
+  billing_v4:
+    type: http
+    url: http://127.0.0.1:9101/ask
+    body: *id002
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v4
+  billing_v5:
+    type: http
+    url: http://127.0.0.1:9101/ask
+    body: *id002
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v5
+  billing_a2a:
+    type: a2a
+    url: http://127.0.0.1:9101/a2a/
+    protocol: auto
+    timeout_s: 600
+  refunds:
+    type: http
+    url: http://127.0.0.1:9102/ask
+    body: &id003
+      message: '{{input}}'
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+  refunds_v1:
+    type: http
+    url: http://127.0.0.1:9102/ask
+    body: *id003
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v1
+  refunds_v2:
+    type: http
+    url: http://127.0.0.1:9102/ask
+    body: *id003
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v2
+  refunds_v3:
+    type: http
+    url: http://127.0.0.1:9102/ask
+    body: *id003
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v3
+  refunds_v4:
+    type: http
+    url: http://127.0.0.1:9102/ask
+    body: *id003
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v4
+  refunds_v5:
+    type: http
+    url: http://127.0.0.1:9102/ask
+    body: *id003
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v5
+  refunds_a2a:
+    type: a2a
+    url: http://127.0.0.1:9102/a2a/
+    protocol: auto
+    timeout_s: 600
+  shipping:
+    type: http
+    url: http://127.0.0.1:9103/ask
+    body: &id004
+      message: '{{input}}'
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+  shipping_v1:
+    type: http
+    url: http://127.0.0.1:9103/ask
+    body: *id004
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v1
+  shipping_v2:
+    type: http
+    url: http://127.0.0.1:9103/ask
+    body: *id004
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v2
+  shipping_v3:
+    type: http
+    url: http://127.0.0.1:9103/ask
+    body: *id004
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v3
+  shipping_v4:
+    type: http
+    url: http://127.0.0.1:9103/ask
+    body: *id004
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v4
+  shipping_v5:
+    type: http
+    url: http://127.0.0.1:9103/ask
+    body: *id004
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v5
+  shipping_a2a:
+    type: a2a
+    url: http://127.0.0.1:9103/a2a/
+    protocol: auto
+    timeout_s: 600
+  returns:
+    type: http
+    url: http://127.0.0.1:9104/ask
+    body: &id005
+      message: '{{input}}'
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+  returns_v1:
+    type: http
+    url: http://127.0.0.1:9104/ask
+    body: *id005
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v1
+  returns_v2:
+    type: http
+    url: http://127.0.0.1:9104/ask
+    body: *id005
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v2
+  returns_v3:
+    type: http
+    url: http://127.0.0.1:9104/ask
+    body: *id005
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v3
+  returns_v4:
+    type: http
+    url: http://127.0.0.1:9104/ask
+    body: *id005
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v4
+  returns_v5:
+    type: http
+    url: http://127.0.0.1:9104/ask
+    body: *id005
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v5
+  returns_a2a:
+    type: a2a
+    url: http://127.0.0.1:9104/a2a/
+    protocol: auto
+    timeout_s: 600
+  tech_support:
+    type: http
+    url: http://127.0.0.1:9105/ask
+    body: &id006
+      message: '{{input}}'
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+  tech_support_v1:
+    type: http
+    url: http://127.0.0.1:9105/ask
+    body: *id006
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v1
+  tech_support_v2:
+    type: http
+    url: http://127.0.0.1:9105/ask
+    body: *id006
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v2
+  tech_support_v3:
+    type: http
+    url: http://127.0.0.1:9105/ask
+    body: *id006
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v3
+  tech_support_v4:
+    type: http
+    url: http://127.0.0.1:9105/ask
+    body: *id006
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v4
+  tech_support_v5:
+    type: http
+    url: http://127.0.0.1:9105/ask
+    body: *id006
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v5
+  tech_support_a2a:
+    type: a2a
+    url: http://127.0.0.1:9105/a2a/
+    protocol: auto
+    timeout_s: 600
+  account_security:
+    type: http
+    url: http://127.0.0.1:9106/ask
+    body: &id007
+      message: '{{input}}'
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+  account_security_v1:
+    type: http
+    url: http://127.0.0.1:9106/ask
+    body: *id007
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v1
+  account_security_v2:
+    type: http
+    url: http://127.0.0.1:9106/ask
+    body: *id007
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v2
+  account_security_v3:
+    type: http
+    url: http://127.0.0.1:9106/ask
+    body: *id007
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v3
+  account_security_v4:
+    type: http
+    url: http://127.0.0.1:9106/ask
+    body: *id007
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v4
+  account_security_v5:
+    type: http
+    url: http://127.0.0.1:9106/ask
+    body: *id007
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v5
+  account_security_a2a:
+    type: a2a
+    url: http://127.0.0.1:9106/a2a/
+    protocol: auto
+    timeout_s: 600
+  subscriptions:
+    type: http
+    url: http://127.0.0.1:9107/ask
+    body: &id008
+      message: '{{input}}'
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+  subscriptions_v1:
+    type: http
+    url: http://127.0.0.1:9107/ask
+    body: *id008
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v1
+  subscriptions_v2:
+    type: http
+    url: http://127.0.0.1:9107/ask
+    body: *id008
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v2
+  subscriptions_v3:
+    type: http
+    url: http://127.0.0.1:9107/ask
+    body: *id008
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v3
+  subscriptions_v4:
+    type: http
+    url: http://127.0.0.1:9107/ask
+    body: *id008
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v4
+  subscriptions_v5:
+    type: http
+    url: http://127.0.0.1:9107/ask
+    body: *id008
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v5
+  subscriptions_a2a:
+    type: a2a
+    url: http://127.0.0.1:9107/a2a/
+    protocol: auto
+    timeout_s: 600
+  promotions:
+    type: http
+    url: http://127.0.0.1:9108/ask
+    body: &id009
+      message: '{{input}}'
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+  promotions_v1:
+    type: http
+    url: http://127.0.0.1:9108/ask
+    body: *id009
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v1
+  promotions_v2:
+    type: http
+    url: http://127.0.0.1:9108/ask
+    body: *id009
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v2
+  promotions_v3:
+    type: http
+    url: http://127.0.0.1:9108/ask
+    body: *id009
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v3
+  promotions_v4:
+    type: http
+    url: http://127.0.0.1:9108/ask
+    body: *id009
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v4
+  promotions_v5:
+    type: http
+    url: http://127.0.0.1:9108/ask
+    body: *id009
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v5
+  promotions_a2a:
+    type: a2a
+    url: http://127.0.0.1:9108/a2a/
+    protocol: auto
+    timeout_s: 600
+  warranty:
+    type: http
+    url: http://127.0.0.1:9109/ask
+    body: &id010
+      message: '{{input}}'
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+  warranty_v1:
+    type: http
+    url: http://127.0.0.1:9109/ask
+    body: *id010
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v1
+  warranty_v2:
+    type: http
+    url: http://127.0.0.1:9109/ask
+    body: *id010
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v2
+  warranty_v3:
+    type: http
+    url: http://127.0.0.1:9109/ask
+    body: *id010
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v3
+  warranty_v4:
+    type: http
+    url: http://127.0.0.1:9109/ask
+    body: *id010
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v4
+  warranty_v5:
+    type: http
+    url: http://127.0.0.1:9109/ask
+    body: *id010
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v5
+  warranty_a2a:
+    type: a2a
+    url: http://127.0.0.1:9109/a2a/
+    protocol: auto
+    timeout_s: 600
+  enterprise_sla:
+    type: http
+    url: http://127.0.0.1:9110/ask
+    body: &id011
+      message: '{{input}}'
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+  enterprise_sla_v1:
+    type: http
+    url: http://127.0.0.1:9110/ask
+    body: *id011
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v1
+  enterprise_sla_v2:
+    type: http
+    url: http://127.0.0.1:9110/ask
+    body: *id011
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v2
+  enterprise_sla_v3:
+    type: http
+    url: http://127.0.0.1:9110/ask
+    body: *id011
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v3
+  enterprise_sla_v4:
+    type: http
+    url: http://127.0.0.1:9110/ask
+    body: *id011
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v4
+  enterprise_sla_v5:
+    type: http
+    url: http://127.0.0.1:9110/ask
+    body: *id011
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v5
+  enterprise_sla_a2a:
+    type: a2a
+    url: http://127.0.0.1:9110/a2a/
+    protocol: auto
+    timeout_s: 600
+  onboarding:
+    type: http
+    url: http://127.0.0.1:9111/ask
+    body: &id012
+      message: '{{input}}'
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+  onboarding_v1:
+    type: http
+    url: http://127.0.0.1:9111/ask
+    body: *id012
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v1
+  onboarding_v2:
+    type: http
+    url: http://127.0.0.1:9111/ask
+    body: *id012
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v2
+  onboarding_v3:
+    type: http
+    url: http://127.0.0.1:9111/ask
+    body: *id012
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v3
+  onboarding_v4:
+    type: http
+    url: http://127.0.0.1:9111/ask
+    body: *id012
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v4
+  onboarding_v5:
+    type: http
+    url: http://127.0.0.1:9111/ask
+    body: *id012
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v5
+  onboarding_a2a:
+    type: a2a
+    url: http://127.0.0.1:9111/a2a/
+    protocol: auto
+    timeout_s: 600
+  privacy_gdpr:
+    type: http
+    url: http://127.0.0.1:9112/ask
+    body: &id013
+      message: '{{input}}'
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+  privacy_gdpr_v1:
+    type: http
+    url: http://127.0.0.1:9112/ask
+    body: *id013
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v1
+  privacy_gdpr_v2:
+    type: http
+    url: http://127.0.0.1:9112/ask
+    body: *id013
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v2
+  privacy_gdpr_v3:
+    type: http
+    url: http://127.0.0.1:9112/ask
+    body: *id013
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v3
+  privacy_gdpr_v4:
+    type: http
+    url: http://127.0.0.1:9112/ask
+    body: *id013
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v4
+  privacy_gdpr_v5:
+    type: http
+    url: http://127.0.0.1:9112/ask
+    body: *id013
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v5
+  privacy_gdpr_a2a:
+    type: a2a
+    url: http://127.0.0.1:9112/a2a/
+    protocol: auto
+    timeout_s: 600
+  fraud:
+    type: http
+    url: http://127.0.0.1:9113/ask
+    body: &id014
+      message: '{{input}}'
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+  fraud_v1:
+    type: http
+    url: http://127.0.0.1:9113/ask
+    body: *id014
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v1
+  fraud_v2:
+    type: http
+    url: http://127.0.0.1:9113/ask
+    body: *id014
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v2
+  fraud_v3:
+    type: http
+    url: http://127.0.0.1:9113/ask
+    body: *id014
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v3
+  fraud_v4:
+    type: http
+    url: http://127.0.0.1:9113/ask
+    body: *id014
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v4
+  fraud_v5:
+    type: http
+    url: http://127.0.0.1:9113/ask
+    body: *id014
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v5
+  fraud_a2a:
+    type: a2a
+    url: http://127.0.0.1:9113/a2a/
+    protocol: auto
+    timeout_s: 600
+  legal_compliance:
+    type: http
+    url: http://127.0.0.1:9114/ask
+    body: &id015
+      message: '{{input}}'
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+  legal_compliance_v1:
+    type: http
+    url: http://127.0.0.1:9114/ask
+    body: *id015
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v1
+  legal_compliance_v2:
+    type: http
+    url: http://127.0.0.1:9114/ask
+    body: *id015
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v2
+  legal_compliance_v3:
+    type: http
+    url: http://127.0.0.1:9114/ask
+    body: *id015
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v3
+  legal_compliance_v4:
+    type: http
+    url: http://127.0.0.1:9114/ask
+    body: *id015
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v4
+  legal_compliance_v5:
+    type: http
+    url: http://127.0.0.1:9114/ask
+    body: *id015
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v5
+  legal_compliance_a2a:
+    type: a2a
+    url: http://127.0.0.1:9114/a2a/
+    protocol: auto
+    timeout_s: 600
+  loyalty:
+    type: http
+    url: http://127.0.0.1:9115/ask
+    body: &id016
+      message: '{{input}}'
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+  loyalty_v1:
+    type: http
+    url: http://127.0.0.1:9115/ask
+    body: *id016
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v1
+  loyalty_v2:
+    type: http
+    url: http://127.0.0.1:9115/ask
+    body: *id016
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v2
+  loyalty_v3:
+    type: http
+    url: http://127.0.0.1:9115/ask
+    body: *id016
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v3
+  loyalty_v4:
+    type: http
+    url: http://127.0.0.1:9115/ask
+    body: *id016
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v4
+  loyalty_v5:
+    type: http
+    url: http://127.0.0.1:9115/ask
+    body: *id016
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v5
+  loyalty_a2a:
+    type: a2a
+    url: http://127.0.0.1:9115/a2a/
+    protocol: auto
+    timeout_s: 600
+  payments_failed:
+    type: http
+    url: http://127.0.0.1:9116/ask
+    body: &id017
+      message: '{{input}}'
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+  payments_failed_v1:
+    type: http
+    url: http://127.0.0.1:9116/ask
+    body: *id017
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v1
+  payments_failed_v2:
+    type: http
+    url: http://127.0.0.1:9116/ask
+    body: *id017
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v2
+  payments_failed_v3:
+    type: http
+    url: http://127.0.0.1:9116/ask
+    body: *id017
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v3
+  payments_failed_v4:
+    type: http
+    url: http://127.0.0.1:9116/ask
+    body: *id017
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v4
+  payments_failed_v5:
+    type: http
+    url: http://127.0.0.1:9116/ask
+    body: *id017
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v5
+  payments_failed_a2a:
+    type: a2a
+    url: http://127.0.0.1:9116/a2a/
+    protocol: auto
+    timeout_s: 600
+  product_info:
+    type: http
+    url: http://127.0.0.1:9117/ask
+    body: &id018
+      message: '{{input}}'
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+  product_info_v1:
+    type: http
+    url: http://127.0.0.1:9117/ask
+    body: *id018
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v1
+  product_info_v2:
+    type: http
+    url: http://127.0.0.1:9117/ask
+    body: *id018
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v2
+  product_info_v3:
+    type: http
+    url: http://127.0.0.1:9117/ask
+    body: *id018
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v3
+  product_info_v4:
+    type: http
+    url: http://127.0.0.1:9117/ask
+    body: *id018
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v4
+  product_info_v5:
+    type: http
+    url: http://127.0.0.1:9117/ask
+    body: *id018
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v5
+  product_info_a2a:
+    type: a2a
+    url: http://127.0.0.1:9117/a2a/
+    protocol: auto
+    timeout_s: 600
+  accessibility:
+    type: http
+    url: http://127.0.0.1:9118/ask
+    body: &id019
+      message: '{{input}}'
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+  accessibility_v1:
+    type: http
+    url: http://127.0.0.1:9118/ask
+    body: *id019
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v1
+  accessibility_v2:
+    type: http
+    url: http://127.0.0.1:9118/ask
+    body: *id019
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v2
+  accessibility_v3:
+    type: http
+    url: http://127.0.0.1:9118/ask
+    body: *id019
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v3
+  accessibility_v4:
+    type: http
+    url: http://127.0.0.1:9118/ask
+    body: *id019
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v4
+  accessibility_v5:
+    type: http
+    url: http://127.0.0.1:9118/ask
+    body: *id019
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v5
+  accessibility_a2a:
+    type: a2a
+    url: http://127.0.0.1:9118/a2a/
+    protocol: auto
+    timeout_s: 600
+  complaints:
+    type: http
+    url: http://127.0.0.1:9119/ask
+    body: &id020
+      message: '{{input}}'
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+  complaints_v1:
+    type: http
+    url: http://127.0.0.1:9119/ask
+    body: *id020
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v1
+  complaints_v2:
+    type: http
+    url: http://127.0.0.1:9119/ask
+    body: *id020
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v2
+  complaints_v3:
+    type: http
+    url: http://127.0.0.1:9119/ask
+    body: *id020
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v3
+  complaints_v4:
+    type: http
+    url: http://127.0.0.1:9119/ask
+    body: *id020
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v4
+  complaints_v5:
+    type: http
+    url: http://127.0.0.1:9119/ask
+    body: *id020
+    output: $.answer
+    context_path: $.context
+    timeout_s: 600
+    headers:
+      X-Support-Version: v5
+  complaints_a2a:
+    type: a2a
+    url: http://127.0.0.1:9119/a2a/
+    protocol: auto
+    timeout_s: 600
+  mcp_v1:
+    type: mcp
+    transport: stdio
+    command:
+    - python
+    - -m
+    - supportkit.mcp_server
+    env:
+      SUPPORT_VERSION: v1
+    tools_file: prompts/v1/tools.json
+  mcp_v2:
+    type: mcp
+    transport: stdio
+    command:
+    - python
+    - -m
+    - supportkit.mcp_server
+    env:
+      SUPPORT_VERSION: v2
+    tools_file: prompts/v2/tools.json
+  mcp_v3:
+    type: mcp
+    transport: stdio
+    command:
+    - python
+    - -m
+    - supportkit.mcp_server
+    env:
+      SUPPORT_VERSION: v3
+    tools_file: prompts/v3/tools.json
+  mcp_v4:
+    type: mcp
+    transport: stdio
+    command:
+    - python
+    - -m
+    - supportkit.mcp_server
+    env:
+      SUPPORT_VERSION: v4
+    tools_file: prompts/v4/tools.json
+  mcp_v5:
+    type: mcp
+    transport: stdio
+    command:
+    - python
+    - -m
+    - supportkit.mcp_server
+    env:
+      SUPPORT_VERSION: v5
+    tools_file: prompts/v5/tools.json
+  support_tools:
+    type: mcp
+    transport: http
+    url: http://127.0.0.1:9200/mcp
+    tools_file: prompts/v5/tools.json
+    timeout_s: 120
+  concierge:
+    type: adk
+    base_url: http://127.0.0.1:9300
+    app_name: northwind_concierge
+    timeout_s: 600
+suites:
+  concierge:
+    target: concierge
+    cases: data/gateway/cases.jsonl
+    context:
+      policy: data/gateway/policy.md
+    assertions:
+    - type: non_empty
+    judges:
+    - type: rubric
+      rubric: grounded_answer
+    trials: 1
+    generate:
+      enabled: false
+  gateway:
+    target: gateway
+    cases: data/gateway/cases.jsonl
+    context: &id021
+      policy: data/gateway/policy.md
+    assertions: &id022
+    - type: non_empty
+    judges: &id023
+    - type: rubric
+      rubric: grounded_answer
+    trials: 1
+    generate: &id024
+      enabled: false
+  gateway_v1:
+    target: gateway_v1
+    cases: data/gateway/cases.jsonl
+    context: *id021
+    assertions: *id022
+    judges: *id023
+    trials: 1
+    generate: *id024
+  gateway_v2:
+    target: gateway_v2
+    cases: data/gateway/cases.jsonl
+    context: *id021
+    assertions: *id022
+    judges: *id023
+    trials: 1
+    generate: *id024
+  gateway_v3:
+    target: gateway_v3
+    cases: data/gateway/cases.jsonl
+    context: *id021
+    assertions: *id022
+    judges: *id023
+    trials: 1
+    generate: *id024
+  gateway_v4:
+    target: gateway_v4
+    cases: data/gateway/cases.jsonl
+    context: *id021
+    assertions: *id022
+    judges: *id023
+    trials: 1
+    generate: *id024
+  gateway_v5:
+    target: gateway_v5
+    cases: data/gateway/cases.jsonl
+    context: *id021
+    assertions: *id022
+    judges: *id023
+    trials: 1
+    generate: *id024
+  gateway_a2a:
+    target: gateway_a2a
+    cases: data/gateway/cases.jsonl
+    context: *id021
+    assertions: *id022
+    judges: *id023
+    trials: 1
+    generate: *id024
+  billing:
+    target: billing
+    cases: data/billing/cases.jsonl
+    context: &id025
+      policy: data/billing/policy.md
+    assertions: &id026
+    - type: non_empty
+    judges: &id027
+    - type: rubric
+      rubric: grounded_answer
+    trials: 1
+    generate: &id028
+      enabled: false
+  billing_v1:
+    target: billing_v1
+    cases: data/billing/cases.jsonl
+    context: *id025
+    assertions: *id026
+    judges: *id027
+    trials: 1
+    generate: *id028
+  billing_v2:
+    target: billing_v2
+    cases: data/billing/cases.jsonl
+    context: *id025
+    assertions: *id026
+    judges: *id027
+    trials: 1
+    generate: *id028
+  billing_v3:
+    target: billing_v3
+    cases: data/billing/cases.jsonl
+    context: *id025
+    assertions: *id026
+    judges: *id027
+    trials: 1
+    generate: *id028
+  billing_v4:
+    target: billing_v4
+    cases: data/billing/cases.jsonl
+    context: *id025
+    assertions: *id026
+    judges: *id027
+    trials: 1
+    generate: *id028
+  billing_v5:
+    target: billing_v5
+    cases: data/billing/cases.jsonl
+    context: *id025
+    assertions: *id026
+    judges: *id027
+    trials: 1
+    generate: *id028
+  billing_a2a:
+    target: billing_a2a
+    cases: data/billing/cases.jsonl
+    context: *id025
+    assertions: *id026
+    judges: *id027
+    trials: 1
+    generate: *id028
+  refunds:
+    target: refunds
+    cases: data/refunds/cases.jsonl
+    context: &id029
+      policy: data/refunds/policy.md
+    assertions: &id030
+    - type: non_empty
+    judges: &id031
+    - type: rubric
+      rubric: grounded_answer
+    trials: 1
+    generate: &id032
+      enabled: false
+  refunds_v1:
+    target: refunds_v1
+    cases: data/refunds/cases.jsonl
+    context: *id029
+    assertions: *id030
+    judges: *id031
+    trials: 1
+    generate: *id032
+  refunds_v2:
+    target: refunds_v2
+    cases: data/refunds/cases.jsonl
+    context: *id029
+    assertions: *id030
+    judges: *id031
+    trials: 1
+    generate: *id032
+  refunds_v3:
+    target: refunds_v3
+    cases: data/refunds/cases.jsonl
+    context: *id029
+    assertions: *id030
+    judges: *id031
+    trials: 1
+    generate: *id032
+  refunds_v4:
+    target: refunds_v4
+    cases: data/refunds/cases.jsonl
+    context: *id029
+    assertions: *id030
+    judges: *id031
+    trials: 1
+    generate: *id032
+  refunds_v5:
+    target: refunds_v5
+    cases: data/refunds/cases.jsonl
+    context: *id029
+    assertions: *id030
+    judges: *id031
+    trials: 1
+    generate: *id032
+  refunds_a2a:
+    target: refunds_a2a
+    cases: data/refunds/cases.jsonl
+    context: *id029
+    assertions: *id030
+    judges: *id031
+    trials: 1
+    generate: *id032
+  shipping:
+    target: shipping
+    cases: data/shipping/cases.jsonl
+    context: &id033
+      policy: data/shipping/policy.md
+    assertions: &id034
+    - type: non_empty
+    judges: &id035
+    - type: rubric
+      rubric: grounded_answer
+    trials: 1
+    generate: &id036
+      enabled: false
+  shipping_v1:
+    target: shipping_v1
+    cases: data/shipping/cases.jsonl
+    context: *id033
+    assertions: *id034
+    judges: *id035
+    trials: 1
+    generate: *id036
+  shipping_v2:
+    target: shipping_v2
+    cases: data/shipping/cases.jsonl
+    context: *id033
+    assertions: *id034
+    judges: *id035
+    trials: 1
+    generate: *id036
+  shipping_v3:
+    target: shipping_v3
+    cases: data/shipping/cases.jsonl
+    context: *id033
+    assertions: *id034
+    judges: *id035
+    trials: 1
+    generate: *id036
+  shipping_v4:
+    target: shipping_v4
+    cases: data/shipping/cases.jsonl
+    context: *id033
+    assertions: *id034
+    judges: *id035
+    trials: 1
+    generate: *id036
+  shipping_v5:
+    target: shipping_v5
+    cases: data/shipping/cases.jsonl
+    context: *id033
+    assertions: *id034
+    judges: *id035
+    trials: 1
+    generate: *id036
+  shipping_a2a:
+    target: shipping_a2a
+    cases: data/shipping/cases.jsonl
+    context: *id033
+    assertions: *id034
+    judges: *id035
+    trials: 1
+    generate: *id036
+  returns:
+    target: returns
+    cases: data/returns/cases.jsonl
+    context: &id037
+      policy: data/returns/policy.md
+    assertions: &id038
+    - type: non_empty
+    judges: &id039
+    - type: rubric
+      rubric: grounded_answer
+    trials: 1
+    generate: &id040
+      enabled: false
+  returns_v1:
+    target: returns_v1
+    cases: data/returns/cases.jsonl
+    context: *id037
+    assertions: *id038
+    judges: *id039
+    trials: 1
+    generate: *id040
+  returns_v2:
+    target: returns_v2
+    cases: data/returns/cases.jsonl
+    context: *id037
+    assertions: *id038
+    judges: *id039
+    trials: 1
+    generate: *id040
+  returns_v3:
+    target: returns_v3
+    cases: data/returns/cases.jsonl
+    context: *id037
+    assertions: *id038
+    judges: *id039
+    trials: 1
+    generate: *id040
+  returns_v4:
+    target: returns_v4
+    cases: data/returns/cases.jsonl
+    context: *id037
+    assertions: *id038
+    judges: *id039
+    trials: 1
+    generate: *id040
+  returns_v5:
+    target: returns_v5
+    cases: data/returns/cases.jsonl
+    context: *id037
+    assertions: *id038
+    judges: *id039
+    trials: 1
+    generate: *id040
+  returns_a2a:
+    target: returns_a2a
+    cases: data/returns/cases.jsonl
+    context: *id037
+    assertions: *id038
+    judges: *id039
+    trials: 1
+    generate: *id040
+  tech_support:
+    target: tech_support
+    cases: data/tech_support/cases.jsonl
+    context: &id041
+      policy: data/tech_support/policy.md
+    assertions: &id042
+    - type: non_empty
+    judges: &id043
+    - type: rubric
+      rubric: grounded_answer
+    trials: 1
+    generate: &id044
+      enabled: false
+  tech_support_v1:
+    target: tech_support_v1
+    cases: data/tech_support/cases.jsonl
+    context: *id041
+    assertions: *id042
+    judges: *id043
+    trials: 1
+    generate: *id044
+  tech_support_v2:
+    target: tech_support_v2
+    cases: data/tech_support/cases.jsonl
+    context: *id041
+    assertions: *id042
+    judges: *id043
+    trials: 1
+    generate: *id044
+  tech_support_v3:
+    target: tech_support_v3
+    cases: data/tech_support/cases.jsonl
+    context: *id041
+    assertions: *id042
+    judges: *id043
+    trials: 1
+    generate: *id044
+  tech_support_v4:
+    target: tech_support_v4
+    cases: data/tech_support/cases.jsonl
+    context: *id041
+    assertions: *id042
+    judges: *id043
+    trials: 1
+    generate: *id044
+  tech_support_v5:
+    target: tech_support_v5
+    cases: data/tech_support/cases.jsonl
+    context: *id041
+    assertions: *id042
+    judges: *id043
+    trials: 1
+    generate: *id044
+  tech_support_a2a:
+    target: tech_support_a2a
+    cases: data/tech_support/cases.jsonl
+    context: *id041
+    assertions: *id042
+    judges: *id043
+    trials: 1
+    generate: *id044
+  account_security:
+    target: account_security
+    cases: data/account_security/cases.jsonl
+    context: &id045
+      policy: data/account_security/policy.md
+    assertions: &id046
+    - type: non_empty
+    judges: &id047
+    - type: rubric
+      rubric: grounded_answer
+    trials: 1
+    generate: &id048
+      enabled: false
+  account_security_v1:
+    target: account_security_v1
+    cases: data/account_security/cases.jsonl
+    context: *id045
+    assertions: *id046
+    judges: *id047
+    trials: 1
+    generate: *id048
+  account_security_v2:
+    target: account_security_v2
+    cases: data/account_security/cases.jsonl
+    context: *id045
+    assertions: *id046
+    judges: *id047
+    trials: 1
+    generate: *id048
+  account_security_v3:
+    target: account_security_v3
+    cases: data/account_security/cases.jsonl
+    context: *id045
+    assertions: *id046
+    judges: *id047
+    trials: 1
+    generate: *id048
+  account_security_v4:
+    target: account_security_v4
+    cases: data/account_security/cases.jsonl
+    context: *id045
+    assertions: *id046
+    judges: *id047
+    trials: 1
+    generate: *id048
+  account_security_v5:
+    target: account_security_v5
+    cases: data/account_security/cases.jsonl
+    context: *id045
+    assertions: *id046
+    judges: *id047
+    trials: 1
+    generate: *id048
+  account_security_a2a:
+    target: account_security_a2a
+    cases: data/account_security/cases.jsonl
+    context: *id045
+    assertions: *id046
+    judges: *id047
+    trials: 1
+    generate: *id048
+  subscriptions:
+    target: subscriptions
+    cases: data/subscriptions/cases.jsonl
+    context: &id049
+      policy: data/subscriptions/policy.md
+    assertions: &id050
+    - type: non_empty
+    judges: &id051
+    - type: rubric
+      rubric: grounded_answer
+    trials: 1
+    generate: &id052
+      enabled: false
+  subscriptions_v1:
+    target: subscriptions_v1
+    cases: data/subscriptions/cases.jsonl
+    context: *id049
+    assertions: *id050
+    judges: *id051
+    trials: 1
+    generate: *id052
+  subscriptions_v2:
+    target: subscriptions_v2
+    cases: data/subscriptions/cases.jsonl
+    context: *id049
+    assertions: *id050
+    judges: *id051
+    trials: 1
+    generate: *id052
+  subscriptions_v3:
+    target: subscriptions_v3
+    cases: data/subscriptions/cases.jsonl
+    context: *id049
+    assertions: *id050
+    judges: *id051
+    trials: 1
+    generate: *id052
+  subscriptions_v4:
+    target: subscriptions_v4
+    cases: data/subscriptions/cases.jsonl
+    context: *id049
+    assertions: *id050
+    judges: *id051
+    trials: 1
+    generate: *id052
+  subscriptions_v5:
+    target: subscriptions_v5
+    cases: data/subscriptions/cases.jsonl
+    context: *id049
+    assertions: *id050
+    judges: *id051
+    trials: 1
+    generate: *id052
+  subscriptions_a2a:
+    target: subscriptions_a2a
+    cases: data/subscriptions/cases.jsonl
+    context: *id049
+    assertions: *id050
+    judges: *id051
+    trials: 1
+    generate: *id052
+  promotions:
+    target: promotions
+    cases: data/promotions/cases.jsonl
+    context: &id053
+      policy: data/promotions/policy.md
+    assertions: &id054
+    - type: non_empty
+    judges: &id055
+    - type: rubric
+      rubric: grounded_answer
+    trials: 1
+    generate: &id056
+      enabled: false
+  promotions_v1:
+    target: promotions_v1
+    cases: data/promotions/cases.jsonl
+    context: *id053
+    assertions: *id054
+    judges: *id055
+    trials: 1
+    generate: *id056
+  promotions_v2:
+    target: promotions_v2
+    cases: data/promotions/cases.jsonl
+    context: *id053
+    assertions: *id054
+    judges: *id055
+    trials: 1
+    generate: *id056
+  promotions_v3:
+    target: promotions_v3
+    cases: data/promotions/cases.jsonl
+    context: *id053
+    assertions: *id054
+    judges: *id055
+    trials: 1
+    generate: *id056
+  promotions_v4:
+    target: promotions_v4
+    cases: data/promotions/cases.jsonl
+    context: *id053
+    assertions: *id054
+    judges: *id055
+    trials: 1
+    generate: *id056
+  promotions_v5:
+    target: promotions_v5
+    cases: data/promotions/cases.jsonl
+    context: *id053
+    assertions: *id054
+    judges: *id055
+    trials: 1
+    generate: *id056
+  promotions_a2a:
+    target: promotions_a2a
+    cases: data/promotions/cases.jsonl
+    context: *id053
+    assertions: *id054
+    judges: *id055
+    trials: 1
+    generate: *id056
+  warranty:
+    target: warranty
+    cases: data/warranty/cases.jsonl
+    context: &id057
+      policy: data/warranty/policy.md
+    assertions: &id058
+    - type: non_empty
+    judges: &id059
+    - type: rubric
+      rubric: grounded_answer
+    trials: 1
+    generate: &id060
+      enabled: false
+  warranty_v1:
+    target: warranty_v1
+    cases: data/warranty/cases.jsonl
+    context: *id057
+    assertions: *id058
+    judges: *id059
+    trials: 1
+    generate: *id060
+  warranty_v2:
+    target: warranty_v2
+    cases: data/warranty/cases.jsonl
+    context: *id057
+    assertions: *id058
+    judges: *id059
+    trials: 1
+    generate: *id060
+  warranty_v3:
+    target: warranty_v3
+    cases: data/warranty/cases.jsonl
+    context: *id057
+    assertions: *id058
+    judges: *id059
+    trials: 1
+    generate: *id060
+  warranty_v4:
+    target: warranty_v4
+    cases: data/warranty/cases.jsonl
+    context: *id057
+    assertions: *id058
+    judges: *id059
+    trials: 1
+    generate: *id060
+  warranty_v5:
+    target: warranty_v5
+    cases: data/warranty/cases.jsonl
+    context: *id057
+    assertions: *id058
+    judges: *id059
+    trials: 1
+    generate: *id060
+  warranty_a2a:
+    target: warranty_a2a
+    cases: data/warranty/cases.jsonl
+    context: *id057
+    assertions: *id058
+    judges: *id059
+    trials: 1
+    generate: *id060
+  enterprise_sla:
+    target: enterprise_sla
+    cases: data/enterprise_sla/cases.jsonl
+    context: &id061
+      policy: data/enterprise_sla/policy.md
+    assertions: &id062
+    - type: non_empty
+    judges: &id063
+    - type: rubric
+      rubric: grounded_answer
+    trials: 1
+    generate: &id064
+      enabled: false
+  enterprise_sla_v1:
+    target: enterprise_sla_v1
+    cases: data/enterprise_sla/cases.jsonl
+    context: *id061
+    assertions: *id062
+    judges: *id063
+    trials: 1
+    generate: *id064
+  enterprise_sla_v2:
+    target: enterprise_sla_v2
+    cases: data/enterprise_sla/cases.jsonl
+    context: *id061
+    assertions: *id062
+    judges: *id063
+    trials: 1
+    generate: *id064
+  enterprise_sla_v3:
+    target: enterprise_sla_v3
+    cases: data/enterprise_sla/cases.jsonl
+    context: *id061
+    assertions: *id062
+    judges: *id063
+    trials: 1
+    generate: *id064
+  enterprise_sla_v4:
+    target: enterprise_sla_v4
+    cases: data/enterprise_sla/cases.jsonl
+    context: *id061
+    assertions: *id062
+    judges: *id063
+    trials: 1
+    generate: *id064
+  enterprise_sla_v5:
+    target: enterprise_sla_v5
+    cases: data/enterprise_sla/cases.jsonl
+    context: *id061
+    assertions: *id062
+    judges: *id063
+    trials: 1
+    generate: *id064
+  enterprise_sla_a2a:
+    target: enterprise_sla_a2a
+    cases: data/enterprise_sla/cases.jsonl
+    context: *id061
+    assertions: *id062
+    judges: *id063
+    trials: 1
+    generate: *id064
+  onboarding:
+    target: onboarding
+    cases: data/onboarding/cases.jsonl
+    context: &id065
+      policy: data/onboarding/policy.md
+    assertions: &id066
+    - type: non_empty
+    judges: &id067
+    - type: rubric
+      rubric: grounded_answer
+    trials: 1
+    generate: &id068
+      enabled: false
+  onboarding_v1:
+    target: onboarding_v1
+    cases: data/onboarding/cases.jsonl
+    context: *id065
+    assertions: *id066
+    judges: *id067
+    trials: 1
+    generate: *id068
+  onboarding_v2:
+    target: onboarding_v2
+    cases: data/onboarding/cases.jsonl
+    context: *id065
+    assertions: *id066
+    judges: *id067
+    trials: 1
+    generate: *id068
+  onboarding_v3:
+    target: onboarding_v3
+    cases: data/onboarding/cases.jsonl
+    context: *id065
+    assertions: *id066
+    judges: *id067
+    trials: 1
+    generate: *id068
+  onboarding_v4:
+    target: onboarding_v4
+    cases: data/onboarding/cases.jsonl
+    context: *id065
+    assertions: *id066
+    judges: *id067
+    trials: 1
+    generate: *id068
+  onboarding_v5:
+    target: onboarding_v5
+    cases: data/onboarding/cases.jsonl
+    context: *id065
+    assertions: *id066
+    judges: *id067
+    trials: 1
+    generate: *id068
+  onboarding_a2a:
+    target: onboarding_a2a
+    cases: data/onboarding/cases.jsonl
+    context: *id065
+    assertions: *id066
+    judges: *id067
+    trials: 1
+    generate: *id068
+  privacy_gdpr:
+    target: privacy_gdpr
+    cases: data/privacy_gdpr/cases.jsonl
+    context: &id069
+      policy: data/privacy_gdpr/policy.md
+    assertions: &id070
+    - type: non_empty
+    judges: &id071
+    - type: rubric
+      rubric: grounded_answer
+    trials: 1
+    generate: &id072
+      enabled: false
+  privacy_gdpr_v1:
+    target: privacy_gdpr_v1
+    cases: data/privacy_gdpr/cases.jsonl
+    context: *id069
+    assertions: *id070
+    judges: *id071
+    trials: 1
+    generate: *id072
+  privacy_gdpr_v2:
+    target: privacy_gdpr_v2
+    cases: data/privacy_gdpr/cases.jsonl
+    context: *id069
+    assertions: *id070
+    judges: *id071
+    trials: 1
+    generate: *id072
+  privacy_gdpr_v3:
+    target: privacy_gdpr_v3
+    cases: data/privacy_gdpr/cases.jsonl
+    context: *id069
+    assertions: *id070
+    judges: *id071
+    trials: 1
+    generate: *id072
+  privacy_gdpr_v4:
+    target: privacy_gdpr_v4
+    cases: data/privacy_gdpr/cases.jsonl
+    context: *id069
+    assertions: *id070
+    judges: *id071
+    trials: 1
+    generate: *id072
+  privacy_gdpr_v5:
+    target: privacy_gdpr_v5
+    cases: data/privacy_gdpr/cases.jsonl
+    context: *id069
+    assertions: *id070
+    judges: *id071
+    trials: 1
+    generate: *id072
+  privacy_gdpr_a2a:
+    target: privacy_gdpr_a2a
+    cases: data/privacy_gdpr/cases.jsonl
+    context: *id069
+    assertions: *id070
+    judges: *id071
+    trials: 1
+    generate: *id072
+  fraud:
+    target: fraud
+    cases: data/fraud/cases.jsonl
+    context: &id073
+      policy: data/fraud/policy.md
+    assertions: &id074
+    - type: non_empty
+    judges: &id075
+    - type: rubric
+      rubric: grounded_answer
+    trials: 1
+    generate: &id076
+      enabled: false
+  fraud_v1:
+    target: fraud_v1
+    cases: data/fraud/cases.jsonl
+    context: *id073
+    assertions: *id074
+    judges: *id075
+    trials: 1
+    generate: *id076
+  fraud_v2:
+    target: fraud_v2
+    cases: data/fraud/cases.jsonl
+    context: *id073
+    assertions: *id074
+    judges: *id075
+    trials: 1
+    generate: *id076
+  fraud_v3:
+    target: fraud_v3
+    cases: data/fraud/cases.jsonl
+    context: *id073
+    assertions: *id074
+    judges: *id075
+    trials: 1
+    generate: *id076
+  fraud_v4:
+    target: fraud_v4
+    cases: data/fraud/cases.jsonl
+    context: *id073
+    assertions: *id074
+    judges: *id075
+    trials: 1
+    generate: *id076
+  fraud_v5:
+    target: fraud_v5
+    cases: data/fraud/cases.jsonl
+    context: *id073
+    assertions: *id074
+    judges: *id075
+    trials: 1
+    generate: *id076
+  fraud_a2a:
+    target: fraud_a2a
+    cases: data/fraud/cases.jsonl
+    context: *id073
+    assertions: *id074
+    judges: *id075
+    trials: 1
+    generate: *id076
+  legal_compliance:
+    target: legal_compliance
+    cases: data/legal_compliance/cases.jsonl
+    context: &id077
+      policy: data/legal_compliance/policy.md
+    assertions: &id078
+    - type: non_empty
+    judges: &id079
+    - type: rubric
+      rubric: grounded_answer
+    trials: 1
+    generate: &id080
+      enabled: false
+  legal_compliance_v1:
+    target: legal_compliance_v1
+    cases: data/legal_compliance/cases.jsonl
+    context: *id077
+    assertions: *id078
+    judges: *id079
+    trials: 1
+    generate: *id080
+  legal_compliance_v2:
+    target: legal_compliance_v2
+    cases: data/legal_compliance/cases.jsonl
+    context: *id077
+    assertions: *id078
+    judges: *id079
+    trials: 1
+    generate: *id080
+  legal_compliance_v3:
+    target: legal_compliance_v3
+    cases: data/legal_compliance/cases.jsonl
+    context: *id077
+    assertions: *id078
+    judges: *id079
+    trials: 1
+    generate: *id080
+  legal_compliance_v4:
+    target: legal_compliance_v4
+    cases: data/legal_compliance/cases.jsonl
+    context: *id077
+    assertions: *id078
+    judges: *id079
+    trials: 1
+    generate: *id080
+  legal_compliance_v5:
+    target: legal_compliance_v5
+    cases: data/legal_compliance/cases.jsonl
+    context: *id077
+    assertions: *id078
+    judges: *id079
+    trials: 1
+    generate: *id080
+  legal_compliance_a2a:
+    target: legal_compliance_a2a
+    cases: data/legal_compliance/cases.jsonl
+    context: *id077
+    assertions: *id078
+    judges: *id079
+    trials: 1
+    generate: *id080
+  loyalty:
+    target: loyalty
+    cases: data/loyalty/cases.jsonl
+    context: &id081
+      policy: data/loyalty/policy.md
+    assertions: &id082
+    - type: non_empty
+    judges: &id083
+    - type: rubric
+      rubric: grounded_answer
+    trials: 1
+    generate: &id084
+      enabled: false
+  loyalty_v1:
+    target: loyalty_v1
+    cases: data/loyalty/cases.jsonl
+    context: *id081
+    assertions: *id082
+    judges: *id083
+    trials: 1
+    generate: *id084
+  loyalty_v2:
+    target: loyalty_v2
+    cases: data/loyalty/cases.jsonl
+    context: *id081
+    assertions: *id082
+    judges: *id083
+    trials: 1
+    generate: *id084
+  loyalty_v3:
+    target: loyalty_v3
+    cases: data/loyalty/cases.jsonl
+    context: *id081
+    assertions: *id082
+    judges: *id083
+    trials: 1
+    generate: *id084
+  loyalty_v4:
+    target: loyalty_v4
+    cases: data/loyalty/cases.jsonl
+    context: *id081
+    assertions: *id082
+    judges: *id083
+    trials: 1
+    generate: *id084
+  loyalty_v5:
+    target: loyalty_v5
+    cases: data/loyalty/cases.jsonl
+    context: *id081
+    assertions: *id082
+    judges: *id083
+    trials: 1
+    generate: *id084
+  loyalty_a2a:
+    target: loyalty_a2a
+    cases: data/loyalty/cases.jsonl
+    context: *id081
+    assertions: *id082
+    judges: *id083
+    trials: 1
+    generate: *id084
+  payments_failed:
+    target: payments_failed
+    cases: data/payments_failed/cases.jsonl
+    context: &id085
+      policy: data/payments_failed/policy.md
+    assertions: &id086
+    - type: non_empty
+    judges: &id087
+    - type: rubric
+      rubric: grounded_answer
+    trials: 1
+    generate: &id088
+      enabled: false
+  payments_failed_v1:
+    target: payments_failed_v1
+    cases: data/payments_failed/cases.jsonl
+    context: *id085
+    assertions: *id086
+    judges: *id087
+    trials: 1
+    generate: *id088
+  payments_failed_v2:
+    target: payments_failed_v2
+    cases: data/payments_failed/cases.jsonl
+    context: *id085
+    assertions: *id086
+    judges: *id087
+    trials: 1
+    generate: *id088
+  payments_failed_v3:
+    target: payments_failed_v3
+    cases: data/payments_failed/cases.jsonl
+    context: *id085
+    assertions: *id086
+    judges: *id087
+    trials: 1
+    generate: *id088
+  payments_failed_v4:
+    target: payments_failed_v4
+    cases: data/payments_failed/cases.jsonl
+    context: *id085
+    assertions: *id086
+    judges: *id087
+    trials: 1
+    generate: *id088
+  payments_failed_v5:
+    target: payments_failed_v5
+    cases: data/payments_failed/cases.jsonl
+    context: *id085
+    assertions: *id086
+    judges: *id087
+    trials: 1
+    generate: *id088
+  payments_failed_a2a:
+    target: payments_failed_a2a
+    cases: data/payments_failed/cases.jsonl
+    context: *id085
+    assertions: *id086
+    judges: *id087
+    trials: 1
+    generate: *id088
+  product_info:
+    target: product_info
+    cases: data/product_info/cases.jsonl
+    context: &id089
+      policy: data/product_info/policy.md
+    assertions: &id090
+    - type: non_empty
+    judges: &id091
+    - type: rubric
+      rubric: grounded_answer
+    trials: 1
+    generate: &id092
+      enabled: false
+  product_info_v1:
+    target: product_info_v1
+    cases: data/product_info/cases.jsonl
+    context: *id089
+    assertions: *id090
+    judges: *id091
+    trials: 1
+    generate: *id092
+  product_info_v2:
+    target: product_info_v2
+    cases: data/product_info/cases.jsonl
+    context: *id089
+    assertions: *id090
+    judges: *id091
+    trials: 1
+    generate: *id092
+  product_info_v3:
+    target: product_info_v3
+    cases: data/product_info/cases.jsonl
+    context: *id089
+    assertions: *id090
+    judges: *id091
+    trials: 1
+    generate: *id092
+  product_info_v4:
+    target: product_info_v4
+    cases: data/product_info/cases.jsonl
+    context: *id089
+    assertions: *id090
+    judges: *id091
+    trials: 1
+    generate: *id092
+  product_info_v5:
+    target: product_info_v5
+    cases: data/product_info/cases.jsonl
+    context: *id089
+    assertions: *id090
+    judges: *id091
+    trials: 1
+    generate: *id092
+  product_info_a2a:
+    target: product_info_a2a
+    cases: data/product_info/cases.jsonl
+    context: *id089
+    assertions: *id090
+    judges: *id091
+    trials: 1
+    generate: *id092
+  accessibility:
+    target: accessibility
+    cases: data/accessibility/cases.jsonl
+    context: &id093
+      policy: data/accessibility/policy.md
+    assertions: &id094
+    - type: non_empty
+    judges: &id095
+    - type: rubric
+      rubric: grounded_answer
+    trials: 1
+    generate: &id096
+      enabled: false
+  accessibility_v1:
+    target: accessibility_v1
+    cases: data/accessibility/cases.jsonl
+    context: *id093
+    assertions: *id094
+    judges: *id095
+    trials: 1
+    generate: *id096
+  accessibility_v2:
+    target: accessibility_v2
+    cases: data/accessibility/cases.jsonl
+    context: *id093
+    assertions: *id094
+    judges: *id095
+    trials: 1
+    generate: *id096
+  accessibility_v3:
+    target: accessibility_v3
+    cases: data/accessibility/cases.jsonl
+    context: *id093
+    assertions: *id094
+    judges: *id095
+    trials: 1
+    generate: *id096
+  accessibility_v4:
+    target: accessibility_v4
+    cases: data/accessibility/cases.jsonl
+    context: *id093
+    assertions: *id094
+    judges: *id095
+    trials: 1
+    generate: *id096
+  accessibility_v5:
+    target: accessibility_v5
+    cases: data/accessibility/cases.jsonl
+    context: *id093
+    assertions: *id094
+    judges: *id095
+    trials: 1
+    generate: *id096
+  accessibility_a2a:
+    target: accessibility_a2a
+    cases: data/accessibility/cases.jsonl
+    context: *id093
+    assertions: *id094
+    judges: *id095
+    trials: 1
+    generate: *id096
+  complaints:
+    target: complaints
+    cases: data/complaints/cases.jsonl
+    context: &id097
+      policy: data/complaints/policy.md
+    assertions: &id098
+    - type: non_empty
+    judges: &id099
+    - type: rubric
+      rubric: grounded_answer
+    trials: 1
+    generate: &id100
+      enabled: false
+  complaints_v1:
+    target: complaints_v1
+    cases: data/complaints/cases.jsonl
+    context: *id097
+    assertions: *id098
+    judges: *id099
+    trials: 1
+    generate: *id100
+  complaints_v2:
+    target: complaints_v2
+    cases: data/complaints/cases.jsonl
+    context: *id097
+    assertions: *id098
+    judges: *id099
+    trials: 1
+    generate: *id100
+  complaints_v3:
+    target: complaints_v3
+    cases: data/complaints/cases.jsonl
+    context: *id097
+    assertions: *id098
+    judges: *id099
+    trials: 1
+    generate: *id100
+  complaints_v4:
+    target: complaints_v4
+    cases: data/complaints/cases.jsonl
+    context: *id097
+    assertions: *id098
+    judges: *id099
+    trials: 1
+    generate: *id100
+  complaints_v5:
+    target: complaints_v5
+    cases: data/complaints/cases.jsonl
+    context: *id097
+    assertions: *id098
+    judges: *id099
+    trials: 1
+    generate: *id100
+  complaints_a2a:
+    target: complaints_a2a
+    cases: data/complaints/cases.jsonl
+    context: *id097
+    assertions: *id098
+    judges: *id099
+    trials: 1
+    generate: *id100
