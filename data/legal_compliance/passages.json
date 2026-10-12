@@ -1,0 +1,34 @@
+[
+ {
+  "id": "P1",
+  "text": "Changes to the terms of service are announced 30 days before they take effect."
+ },
+ {
+  "id": "P2",
+  "text": "Accounts used to send spam or illegal content are suspended without refund."
+ },
+ {
+  "id": "P3",
+  "text": "Copyright complaints must be sent to the designated agent with the URL of the material."
+ },
+ {
+  "id": "P4",
+  "text": "Our SOC 2 Type II report is available under NDA on request."
+ },
+ {
+  "id": "P5",
+  "text": "The governing law for customer contracts is the law of Ireland."
+ },
+ {
+  "id": "P6",
+  "text": "Customers own the content they upload and grant us a licence only to operate the service."
+ },
+ {
+  "id": "P7",
+  "text": "Support agents cannot give legal advice or interpret contracts."
+ },
+ {
+  "id": "P8",
+  "text": "Custom contract terms require approval from our legal team and take 10 business days."
+ }
+]

@@ -1,0 +1,34 @@
+[
+ {
+  "id": "P1",
+  "text": "Data access requests are answered within 30 days."
+ },
+ {
+  "id": "P2",
+  "text": "Account deletion removes personal data within 30 days, except records we must keep by law."
+ },
+ {
+  "id": "P3",
+  "text": "Invoices and tax records are kept for 7 years even after deletion."
+ },
+ {
+  "id": "P4",
+  "text": "A full data export in JSON or CSV is available from Settings, then Privacy."
+ },
+ {
+  "id": "P5",
+  "text": "Marketing consent can be withdrawn at any time from Settings, then Notifications."
+ },
+ {
+  "id": "P6",
+  "text": "We do not sell personal data."
+ },
+ {
+  "id": "P7",
+  "text": "Support logs are deleted 12 months after a ticket is closed."
+ },
+ {
+  "id": "P8",
+  "text": "Requests must come from the verified email address on the account."
+ }
+]

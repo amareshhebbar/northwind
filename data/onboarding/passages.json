@@ -1,0 +1,34 @@
+[
+ {
+  "id": "P1",
+  "text": "A new workspace is ready within 2 minutes of signing up."
+ },
+ {
+  "id": "P2",
+  "text": "Data can be imported from CSV files up to 50 MB."
+ },
+ {
+  "id": "P3",
+  "text": "Workspace owners can invite up to 25 teammates on the starter plan."
+ },
+ {
+  "id": "P4",
+  "text": "Invitations expire after 7 days and can be resent."
+ },
+ {
+  "id": "P5",
+  "text": "Single sign-on setup is available on the business plan and above."
+ },
+ {
+  "id": "P6",
+  "text": "The guided checklist can be reopened from Help, then Getting started."
+ },
+ {
+  "id": "P7",
+  "text": "A free 30 minute onboarding call is included with business plans."
+ },
+ {
+  "id": "P8",
+  "text": "Imported data can be rolled back within 24 hours of the import."
+ }
+]

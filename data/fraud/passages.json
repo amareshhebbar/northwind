@@ -1,0 +1,34 @@
+[
+ {
+  "id": "P1",
+  "text": "Unauthorised transactions must be reported within 30 days of the statement date."
+ },
+ {
+  "id": "P2",
+  "text": "A fraud hold is placed on an account when 3 payments fail within an hour."
+ },
+ {
+  "id": "P3",
+  "text": "Fraud holds are reviewed within 24 hours."
+ },
+ {
+  "id": "P4",
+  "text": "Customers verifying a held payment must provide the last 4 digits of the card and a billing postcode."
+ },
+ {
+  "id": "P5",
+  "text": "Confirmed fraud refunds are issued within 10 business days."
+ },
+ {
+  "id": "P6",
+  "text": "We never contact customers by phone to ask for card details."
+ },
+ {
+  "id": "P7",
+  "text": "Card disputes opened with the bank pause our own review until the bank decides."
+ },
+ {
+  "id": "P8",
+  "text": "Repeat chargebacks can lead to account closure."
+ }
+]

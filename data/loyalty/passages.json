@@ -1,0 +1,34 @@
+[
+ {
+  "id": "P1",
+  "text": "Members earn 1 point for every dollar spent."
+ },
+ {
+  "id": "P2",
+  "text": "Points expire 12 months after they are earned."
+ },
+ {
+  "id": "P3",
+  "text": "Silver tier starts at 500 points and gold tier at 2000 points in a calendar year."
+ },
+ {
+  "id": "P4",
+  "text": "100 points can be redeemed for a 5 dollar discount."
+ },
+ {
+  "id": "P5",
+  "text": "Points are not earned on gift cards, taxes or shipping fees."
+ },
+ {
+  "id": "P6",
+  "text": "Points cannot be transferred between accounts."
+ },
+ {
+  "id": "P7",
+  "text": "Refunded orders have their points removed."
+ },
+ {
+  "id": "P8",
+  "text": "Gold members get free express shipping on every order."
+ }
+]
