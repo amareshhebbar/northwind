@@ -1,0 +1,864 @@
+platform:
+  name: northwind-support
+  host: 127.0.0.1
+  default_version: v1
+llm:
+  roles:
+    decision: ${DECISION_LLM:-ollama:qwen3:4b}
+    answer: ${ANSWER_LLM:-ollama:qwen3:4b}
+    verifier: ${VERIFIER_LLM:-ollama:qwen3:4b}
+  embeddings: ${EMBED_MODEL:-hash}
+  providers:
+    timeout_s: ${LLM_TIMEOUT_S:-180}
+    ollama:
+      host: ${OLLAMA_HOST:-http://localhost:11434}
+stores:
+  json:
+    path: .state/json
+  sqlite:
+    path: .state/sqlite
+  chroma:
+    path: .state/chroma
+  qdrant:
+    url: ${QDRANT_URL:-http://localhost:6333}
+  postgres:
+    url: ${DATABASE_URL:-postgresql://support:support@localhost:5432/support}
+  redis:
+    url: ${REDIS_URL:-redis://localhost:6379/0}
+services:
+  gateway:
+    kind: gateway
+    port: 9100
+    company: Northwind
+    domain: customer support front door
+    usecase: Decision AI that routes each customer message to the right specialist service over A2A.
+    flow: gateway
+    agents:
+      router: strands
+    transport: ${GATEWAY_TRANSPORT:-a2a}
+    llm:
+      decision: ${GATEWAY_DECISION_LLM:-${DECISION_LLM:-ollama:qwen3:4b}}
+    routes_to:
+    - billing
+    - refunds
+    - shipping
+    - returns
+    - tech_support
+    - account_security
+    - subscriptions
+    - promotions
+    - warranty
+    - enterprise_sla
+    - onboarding
+    - privacy_gdpr
+    - fraud
+    - legal_compliance
+    - loyalty
+    - payments_failed
+    - product_info
+    - accessibility
+    - complaints
+    depends_on:
+    - billing
+    - refunds
+    - shipping
+    - returns
+    - tech_support
+    - account_security
+    - subscriptions
+    - promotions
+    - warranty
+    - enterprise_sla
+    - onboarding
+    - privacy_gdpr
+    - fraud
+    - legal_compliance
+    - loyalty
+    - payments_failed
+    - product_info
+    - accessibility
+    - complaints
+  support_tools:
+    kind: mcp
+    port: 9200
+    usecase: MCP server exposing lookup_policy, lookup_record and escalate_to_human for every service.
+    transport: streamable-http
+    path: /mcp
+  concierge:
+    kind: adk_app
+    port: 9300
+    company: Northwind
+    domain: concierge
+    usecase: Google ADK concierge served by the ADK api server; hands customers to specialists through RemoteA2aAgent and uses MCP tools.
+    app_name: northwind_concierge
+    llm:
+      decision: ${CONCIERGE_LLM:-${DECISION_LLM:-ollama:qwen3:4b}}
+    routes_to:
+    - billing
+    - refunds
+    - shipping
+    - returns
+    - tech_support
+    - account_security
+    - subscriptions
+    - promotions
+    - warranty
+    - enterprise_sla
+    - onboarding
+    - privacy_gdpr
+    - fraud
+    - legal_compliance
+    - loyalty
+    - payments_failed
+    - product_info
+    - accessibility
+    - complaints
+    depends_on:
+    - support_tools
+    - billing
+    - refunds
+    - shipping
+    - returns
+    - tech_support
+    - account_security
+    - subscriptions
+    - promotions
+    - warranty
+    - enterprise_sla
+    - onboarding
+    - privacy_gdpr
+    - fraud
+    - legal_compliance
+    - loyalty
+    - payments_failed
+    - product_info
+    - accessibility
+    - complaints
+  billing:
+    port: 9101
+    company: Northwind
+    domain: billing
+    usecase: Invoices, due dates, late fees and billing disputes.
+    scope: invoices, billing dates, late fees, tax details and billing disputes
+    keywords:
+    - invoice
+    - billing
+    - bill
+    - charge
+    - charged
+    - late fee
+    - tax
+    - payment due
+    - dispute
+    - receipt
+    - invoices
+    - issued
+    - payments
+    - received
+    - customer
+    - change
+    - copies
+    - duplicate
+    - charges
+    - added
+    - cannot
+    - accepted
+    - card
+    - disputes
+    flow: langgraph
+    agents:
+      router: direct
+      answerer: direct
+      verifier: direct
+    store: sqlite
+    record_prefix: BIL
+    max_inflight: 2
+  refunds:
+    port: 9102
+    company: Northwind
+    domain: refunds
+    usecase: Refund eligibility, refund timing and refund methods.
+    scope: refund eligibility, refund timing, refund method and partial refunds
+    keywords:
+    - refund
+    - money back
+    - reimburse
+    - cancel order
+    - partial refund
+    - chargeback
+    - credit
+    - full
+    - refunds
+    - issued
+    - original
+    - digital
+    - downloads
+    - change
+    - mind
+    - damaged
+    - items
+    - shipping
+    - costs
+    - gift
+    - purchases
+    - requests
+    flow: langgraph
+    agents:
+      router: strands
+      answerer: crewai
+      verifier: direct
+    store: chroma
+    record_prefix: RFD
+    max_inflight: 2
+  shipping:
+    port: 9103
+    company: Northwind
+    domain: shipping
+    usecase: Delivery times, tracking, shipping costs and lost parcels.
+    scope: delivery time, tracking, shipping cost, customs and lost parcels
+    keywords:
+    - shipping
+    - delivery
+    - deliver
+    - tracking
+    - parcel
+    - package
+    - courier
+    - customs
+    - lost
+    - standard
+    - express
+    - takes
+    - orders
+    - over
+    - link
+    - international
+    - take
+    - delivered
+    - address
+    - ship
+    - boxes
+    flow: plain
+    agents:
+      router: direct
+      answerer: direct
+      verifier: direct
+    store: json
+    record_prefix: SHP
+    max_inflight: 2
+    tools_via: mcp
+    depends_on:
+    - support_tools
+  returns:
+    port: 9104
+    company: Northwind
+    domain: returns
+    usecase: Return windows, return labels, condition rules and exchanges.
+    scope: return window, return labels, item condition and exchanges
+    keywords:
+    - return
+    - exchange
+    - send back
+    - label
+    - rma
+    - swap
+    - wrong size
+    - items
+    - returned
+    - prepaid
+    - must
+    - unused
+    - exchanges
+    - different
+    - final
+    - sale
+    - returns
+    - inspected
+    - opened
+    - hygiene
+    - shipments
+    - sent
+    flow: crewai_flow
+    agents:
+      router: crewai
+      answerer: crewai
+      verifier: crewai
+    store: postgres
+    record_prefix: RET
+    max_inflight: 2
+  tech_support:
+    port: 9105
+    company: Northwind
+    domain: technical support
+    usecase: App crashes, login problems, sync issues and supported devices.
+    scope: app crashes, login problems, sync issues, updates and supported devices
+    keywords:
+    - crash
+    - login
+    - log in
+    - password
+    - sync
+    - update
+    - bug
+    - error
+    - app
+    - device
+    - install
+    - supports
+    - later
+    - reset
+    - crashes
+    - launch
+    - problems
+    - priority
+    - issues
+    - support
+    - hours
+    - troubleshoot
+    - jailbroken
+    - logs
+    - sent
+    flow: adk_workflow
+    agents:
+      router: adk
+      answerer: adk
+      verifier: adk
+    store: qdrant
+    record_prefix: TCH
+    max_inflight: 2
+  account_security:
+    port: 9106
+    company: Northwind
+    domain: account security
+    usecase: Two factor authentication, account recovery, suspicious logins and lockouts.
+    scope: two factor authentication, account recovery, suspicious logins and account lockouts
+    keywords:
+    - two factor
+    - 2fa
+    - hacked
+    - locked
+    - recovery
+    - suspicious
+    - security
+    - login alert
+    - account
+    - factor
+    - authentication
+    - failed
+    - login
+    - support
+    - never
+    - alerts
+    - codes
+    - shown
+    - sessions
+    - other
+    - accounts
+    - reported
+    flow: langgraph
+    agents:
+      router: direct
+      answerer: strands
+      verifier: a2a:fraud
+    store: redis
+    record_prefix: SEC
+    max_inflight: 2
+    depends_on:
+    - fraud
+  subscriptions:
+    port: 9107
+    company: Northwind
+    domain: subscriptions
+    usecase: Plan changes, cancellations, renewals and trials.
+    scope: plan changes, cancellation, renewal, free trials and pausing
+    keywords:
+    - subscription
+    - plan
+    - cancel
+    - renew
+    - trial
+    - upgrade
+    - downgrade
+    - pause
+    - subscriptions
+    - cancellation
+    - takes
+    - free
+    - trials
+    - upgrades
+    - take
+    - downgrades
+    - effect
+    - paused
+    - annual
+    - plans
+    - renewal
+    - reminder
+    flow: plain
+    agents:
+      router: pydantic_ai
+      answerer: pydantic_ai
+      verifier: strands
+    store: sqlite
+    record_prefix: SUB
+    max_inflight: 2
+  promotions:
+    port: 9108
+    company: Northwind
+    domain: promotions and discounts
+    usecase: Promo codes, discount stacking, price matching and expired offers.
+    scope: promo codes, discount rules, price matching and expired offers
+    keywords:
+    - promo
+    - coupon
+    - discount
+    - code
+    - voucher
+    - price match
+    - sale
+    - offer
+    - codes
+    - cannot
+    - expired
+    - reactivated
+    - price
+    - matching
+    - welcome
+    - discounts
+    - apply
+    - removed
+    - checkout
+    - student
+    - percent
+    flow: crewai_flow
+    agents:
+      router: direct
+      answerer: crewai
+      verifier: direct
+    store: json
+    record_prefix: PRM
+    max_inflight: 2
+  warranty:
+    port: 9109
+    company: Northwind
+    domain: warranty
+    usecase: Warranty length, coverage, claims and repairs.
+    scope: warranty length, coverage, claims, repairs and replacements
+    keywords:
+    - warranty
+    - repair
+    - defect
+    - claim
+    - replacement
+    - coverage
+    - broken
+    - guarantee
+    - products
+    - carry
+    - covers
+    - claims
+    - require
+    - approved
+    - repaired
+    - battery
+    - capacity
+    - void
+    - product
+    - transferable
+    - second
+    - customers
+    - shipping
+    flow: llamaindex_workflow
+    agents:
+      router: adk
+      answerer: crewai
+      verifier: strands
+    store: chroma
+    record_prefix: WAR
+    max_inflight: 2
+  enterprise_sla:
+    port: 9110
+    company: Northwind
+    domain: enterprise service levels
+    usecase: Uptime commitments, response times, service credits and escalation paths for enterprise customers.
+    scope: uptime commitments, response times, service credits and escalation for enterprise plans
+    keywords:
+    - sla
+    - uptime
+    - enterprise
+    - service credit
+    - outage
+    - response time
+    - escalation
+    - downtime
+    - plans
+    - below
+    - percent
+    - earns
+    - service
+    - credits
+    - severity
+    - incidents
+    - planned
+    - maintenance
+    - account
+    - named
+    - applied
+    - next
+    flow: langgraph
+    agents:
+      router: crewai
+      answerer: adk
+      verifier: a2a:legal_compliance
+    store: postgres
+    record_prefix: SLA
+    max_inflight: 2
+    depends_on:
+    - legal_compliance
+  onboarding:
+    port: 9111
+    company: Northwind
+    domain: onboarding
+    usecase: Account setup, importing data, inviting teammates and first week checklist.
+    scope: account setup, data import, inviting teammates and getting started
+    keywords:
+    - onboarding
+    - get started
+    - setup
+    - import
+    - invite
+    - teammate
+    - workspace
+    - first week
+    - ready
+    - data
+    - imported
+    - owners
+    - invitations
+    - expire
+    - single
+    - sign
+    - guided
+    - checklist
+    - free
+    - minute
+    - rolled
+    - back
+    flow: adk_workflow
+    agents:
+      router: adk
+      answerer: pydantic_ai
+      verifier: adk
+    store: qdrant
+    record_prefix: ONB
+    max_inflight: 2
+  privacy_gdpr:
+    port: 9112
+    company: Northwind
+    domain: privacy and data requests
+    usecase: Data access, deletion and portability requests and retention periods.
+    scope: data access requests, deletion requests, data export, consent and retention
+    keywords:
+    - privacy
+    - gdpr
+    - delete my data
+    - data export
+    - personal data
+    - consent
+    - retention
+    - erase
+    - data
+    - access
+    - account
+    - deletion
+    - invoices
+    - records
+    - full
+    - export
+    - marketing
+    - sell
+    - personal
+    - support
+    - logs
+    - requests
+    - must
+    flow: langgraph
+    agents:
+      router: strands
+      answerer: direct
+      verifier: a2a:legal_compliance
+    store: redis
+    record_prefix: PRV
+    max_inflight: 2
+    tools_via: mcp
+    depends_on:
+    - legal_compliance
+    - support_tools
+  fraud:
+    port: 9113
+    company: Northwind
+    domain: fraud and disputes
+    usecase: Unauthorised transactions, card disputes and fraud holds.
+    scope: unauthorised transactions, card disputes, fraud holds and payment verification
+    keywords:
+    - fraud
+    - unauthorised
+    - unauthorized
+    - stolen
+    - dispute
+    - hold
+    - verify
+    - scam
+    - transactions
+    - holds
+    - reviewed
+    - customers
+    - verifying
+    - confirmed
+    - refunds
+    - never
+    - contact
+    - card
+    - disputes
+    - repeat
+    - chargebacks
+    flow: plain
+    agents:
+      router: direct
+      answerer: direct
+      verifier: direct
+    store: sqlite
+    record_prefix: FRD
+    max_inflight: 2
+    llm:
+      verifier: ${FRAUD_VERIFIER_LLM:-${VERIFIER_LLM:-ollama:qwen3:4b}}
+    tools_via: mcp
+    depends_on:
+    - support_tools
+  legal_compliance:
+    port: 9114
+    company: Northwind
+    domain: legal and compliance
+    usecase: Terms of service, acceptable use, copyright notices and regulatory questions.
+    scope: terms of service, acceptable use, copyright notices, contracts and compliance certificates
+    keywords:
+    - terms
+    - legal
+    - contract
+    - copyright
+    - compliance
+    - certificate
+    - soc 2
+    - acceptable use
+    - changes
+    - accounts
+    - used
+    - complaints
+    - type
+    - report
+    - governing
+    - customer
+    - customers
+    - content
+    - support
+    - agents
+    - custom
+    flow: langgraph
+    agents:
+      router: crewai
+      answerer: crewai
+      verifier: strands
+    store: json
+    record_prefix: LGL
+    max_inflight: 2
+    llm:
+      verifier: ${LEGAL_COMPLIANCE_VERIFIER_LLM:-${VERIFIER_LLM:-ollama:qwen3:4b}}
+  loyalty:
+    port: 9115
+    company: Northwind
+    domain: loyalty rewards
+    usecase: Points earning, tiers, redemption and expiry.
+    scope: loyalty points, tiers, redemption and expiry
+    keywords:
+    - points
+    - loyalty
+    - reward
+    - tier
+    - redeem
+    - expire
+    - member
+    - members
+    - earn
+    - silver
+    - redeemed
+    - dollar
+    - earned
+    - gift
+    - cannot
+    - transferred
+    - refunded
+    - orders
+    - gold
+    - free
+    flow: llamaindex_workflow
+    agents:
+      router: pydantic_ai
+      answerer: strands
+      verifier: direct
+    store: chroma
+    record_prefix: LOY
+    max_inflight: 2
+  payments_failed:
+    port: 9116
+    company: Northwind
+    domain: failed payments
+    usecase: Declined cards, retries, payment method updates and grace periods.
+    scope: declined cards, payment retries, updating payment methods and grace periods
+    keywords:
+    - declined
+    - failed payment
+    - card
+    - retry
+    - payment method
+    - grace period
+    - expired card
+    - failed
+    - payment
+    - customers
+    - receive
+    - access
+    - continues
+    - grace
+    - period
+    - method
+    - updated
+    - updating
+    - accounts
+    - read
+    - declines
+    - caused
+    flow: langgraph
+    agents:
+      router: direct
+      answerer: adk
+      verifier: pydantic_ai
+    store: postgres
+    record_prefix: PAY
+    max_inflight: 2
+    tools_via: mcp
+    depends_on:
+    - support_tools
+  product_info:
+    port: 9117
+    company: Northwind
+    domain: product information
+    usecase: Specifications, compatibility, battery life and what is in the box.
+    scope: specifications, compatibility, battery life, colours and box contents
+    keywords:
+    - spec
+    - battery
+    - compatible
+    - colour
+    - color
+    - box
+    - size
+    - weight
+    - waterproof
+    - pulse
+    - speaker
+    - rated
+    - survives
+    - connects
+    - over
+    - includes
+    - cable
+    - comes
+    - black
+    - charging
+    - empty
+    - weighs
+    - grams
+    - speakers
+    - paired
+    flow: llamaindex_workflow
+    agents:
+      router: direct
+      answerer: crewai
+      verifier: strands
+    store: qdrant
+    record_prefix: PRD
+    max_inflight: 2
+  accessibility:
+    port: 9118
+    company: Northwind
+    domain: accessibility
+    usecase: Screen reader support, keyboard navigation, captions and accessible formats.
+    scope: screen readers, keyboard navigation, captions, colour contrast and accessible formats
+    keywords:
+    - accessibility
+    - screen reader
+    - keyboard
+    - captions
+    - contrast
+    - voiceover
+    - talkback
+    - braille
+    - supports
+    - mobile
+    - apps
+    - product
+    - videos
+    - high
+    - documents
+    - provided
+    - issues
+    - support
+    - available
+    - text
+    - scaled
+    flow: adk_workflow
+    agents:
+      router: strands
+      answerer: adk
+      verifier: direct
+    store: redis
+    record_prefix: ACC
+    max_inflight: 2
+  complaints:
+    port: 9119
+    company: Northwind
+    domain: complaints and feedback
+    usecase: Formal complaints, response times, escalation and compensation.
+    scope: formal complaints, response times, escalation, goodwill gestures and feedback
+    keywords:
+    - complaint
+    - unhappy
+    - feedback
+    - escalate
+    - manager
+    - compensation
+    - poor service
+    - ombudsman
+    - formal
+    - complaints
+    - final
+    - response
+    - escalated
+    - senior
+    - goodwill
+    - credits
+    - above
+    - dollars
+    - customers
+    - request
+    - logged
+    - reviewed
+    - resolved
+    flow: crewai_flow
+    agents:
+      router: adk
+      answerer: direct
+      verifier: crewai
+    store: sqlite
+    record_prefix: CMP
+    max_inflight: 2
