@@ -1,0 +1,34 @@
+[
+ {
+  "id": "P1",
+  "text": "A failed payment is retried automatically 3 times over 7 days."
+ },
+ {
+  "id": "P2",
+  "text": "Customers receive an email after each failed attempt."
+ },
+ {
+  "id": "P3",
+  "text": "Access continues for a 7 day grace period after the first failure."
+ },
+ {
+  "id": "P4",
+  "text": "After the grace period the account moves to read only mode."
+ },
+ {
+  "id": "P5",
+  "text": "A payment method can be updated in Settings, then Billing, then Payment methods."
+ },
+ {
+  "id": "P6",
+  "text": "Updating the card triggers an immediate retry of the outstanding invoice."
+ },
+ {
+  "id": "P7",
+  "text": "Accounts in read only mode for 60 days are scheduled for deletion."
+ },
+ {
+  "id": "P8",
+  "text": "Declines caused by the bank must be resolved with the bank; we cannot override them."
+ }
+]
